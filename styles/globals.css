@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap");
+
+body {
+  background-color: #fafafa;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+@layer base {
+  body {
+    @apply dark:bg-[#202c37];
+  }
+  .info-country > p {
+    @apply font-semibold;
+  }
+  .info-country > p > span {
+    @apply font-light;
+  }
+}
