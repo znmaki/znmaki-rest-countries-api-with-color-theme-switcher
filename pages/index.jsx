@@ -1,8 +1,8 @@
 import Layout from "../components/Layout";
+import FormSearch from "../components/FormSearch";
 import axios from "axios";
 import Country from "../components/Country";
 import { useEffect, useState } from "react";
-import FormSearch from "../components/FormSearch";
 
 
 export default function Home({ data }) {

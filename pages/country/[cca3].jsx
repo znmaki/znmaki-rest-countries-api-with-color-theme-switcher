@@ -21,18 +21,18 @@ const SearchCountry = ({ country, neighbors }) => {
         <div className='my-auto'>
           <h2 className='text-2xl font-bold py-5'>{common}</h2>
           <div className='grid grid-rows-5 md:grid-flow-col lg:grid-flow-col 2xl:grid-flow-col info-country'>
-            <p>Native Name: <span>{Object.values(country[0].name.nativeName).pop().common}</span></p>
-            <p>Population: <span>{population.toLocaleString('en-US')}</span></p>
-            <p>Region: <span>{region}</span></p>
-            <p>Sub Region: <span>{subregion}</span></p>
-            <p>Capital: <span>{capital}</span></p>
-            <p className='mt-5 sm:mt-0 2xl:mt-0'>Top Level Domain: <span>{tld[0]}</span></p>
-            <p>Currencies: <span>{`${Object.values(currencies)[0].name} (${Object.values(currencies)[0].symbol})`}</span></p>
-            <p>Languages: <span>{Object.values(languages).join(', ')}</span></p>
+            <p>Native Name: <span>{country[0].name.nativeName ? Object.values(country[0].name.nativeName).pop().common : 'None'}</span></p>
+            <p>Population: <span>{population ? population.toLocaleString('en-US') : 'None'}</span></p>
+            <p>Region: <span>{region ? region : 'None'}</span></p>
+            <p>Sub Region: <span>{subregion ? subregion : 'None'}</span></p>
+            <p>Capital: <span>{capital ? capital : 'None'}</span></p>
+            <p className='mt-5 sm:mt-0 2xl:mt-0'>Top Level Domain: <span>{tld ? tld[0] : 'None'}</span></p>
+            <p>Currencies: <span>{currencies ? `${Object.values(currencies)[0].name} (${Object.values(currencies)[0].symbol})` : `None`}</span></p>
+            <p>Languages: <span>{languages ? Object.values(languages).join(', ') : 'None'}</span></p>
           </div>
-          {neighbors && (
-            <div className='flex mt-5 flex-col sm:flex-row'>
-              <p className='mb-2 mr-5'>Border Countries: </p>
+          <div className='flex mt-5 flex-col sm:flex-row'>
+            <p className='mb-2 mr-5'>Border Countries: </p>
+            {neighbors ?
               <div className='grid grid-cols-2 gap-4'>
                 {neighbors.map(neighbor => {
                   return (
@@ -41,9 +41,12 @@ const SearchCountry = ({ country, neighbors }) => {
                     </Link>
                   )
                 })}
-              </div>
-            </div>
-          )}
+              </div> :
+              (<Link href={`/`}>
+                <a className='w-[330px] text-xs text-center dark:bg-[#2b3945] shadow-custze-2 border border-[#10141785] p-3 m-auto md:m-0'>None</a>
+              </Link>)
+            }
+          </div>
         </div>
       </section>
     </Layout>
