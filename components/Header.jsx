@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Moon, Sun } from './Icons'
 import { useTheme } from 'next-themes'
+import Link from 'next/link'
 
 const Header = () => {
 
@@ -30,7 +31,9 @@ const Header = () => {
   return (
     <header className='py-4 dark:bg-[#2b3945] bg-[#ffffff] shadow-custze'>
       <div className='flex items-center justify-between w-[94%] m-auto'>
-        <h1 className='text-lg font-bold'>Where in the world?</h1>
+        <Link href='/'>
+          <h1 className='text-lg font-bold select-none hover:cursor-pointer'>Where in the world?</h1>
+        </Link>
         {ThemeChangerClick()}
 
       </div>

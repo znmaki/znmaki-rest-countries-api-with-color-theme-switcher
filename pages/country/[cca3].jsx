@@ -6,9 +6,9 @@ import Image from 'next/image'
 
 const SearchCountry = ({ country, neighbors }) => {
   const { flags: { svg }, name: { common }, population, region, subregion, capital, tld, currencies, languages } = country[0]
-  console.log(neighbors);
+
   return (
-    <Layout>
+    <Layout nameCountry={common}>
       <div className='w-[94%] mx-auto my-10'>
         <Link href='/'>
           <a className='dark:bg-[#2b3945] shadow-custze-2 border border-[#10141785] px-8 py-3'>← Back</a>
@@ -36,7 +36,7 @@ const SearchCountry = ({ country, neighbors }) => {
               <div className='grid grid-cols-2 gap-4'>
                 {neighbors.map(neighbor => {
                   return (
-                    <Link key={neighbor.name.official} href={`/country/${neighbor.name.common}`}>
+                    <Link key={neighbor.cca3} href={`/country/${neighbor.cca3}`}>
                       <a className='text-xs text-center dark:bg-[#2b3945] shadow-custze-2 border border-[#10141785] p-3 m-auto md:m-0'>{neighbor.name.official}</a>
                     </Link>
                   )
